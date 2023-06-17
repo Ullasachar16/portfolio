@@ -334,7 +334,8 @@ nav ul li a:hover::after {
     width: 100%;
 }
 
-form input, form textarea {
+form input,
+form textarea {
     width: 100%;
     border: 0;
     outline: none;
@@ -360,4 +361,16 @@ footer {
     background: #262626;
     font-weight: 300;
     margin-top: 20px;
+}
+
+footer i {
+    color: #ff004f;
+}
+
+/* -------------------------------Media Queries (Css for smaller screens)-------------------------- */
+
+@media only screen and (max-width: 600px) {
+    #header {
+        background-image: url(images/phone-background.png);
+    }
 }
