@@ -162,10 +162,11 @@
                         <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
                         <button type="Submit" class="btn btn2">Submit</button>
                     </form>
+                    <span id="msg"></span>
                 </div>
             </div>
         </div>
-        <footer class="copyright">
+        <footer>
             <p>Copyright © Ullas. Made with <i class="fas fa-heart"></i> by Easy Tutorials.</p>
         </footer>
 
@@ -200,11 +201,18 @@
         <script>
             const scriptURL = 'https://script.google.com/macros/s/AKfycbxQYlwL_m8WL0q6Oy9ZMb_E4tebSTAD3FPBTGeuRzJUxyVSsKV9UIdfZpY7OttSfm0qJw/exec'
             const form = document.forms['submit-to-google-sheet']
+            const msg = document.getElementById("msg")
 
             form.addEventListener('submit', e => {
                 e.preventDefault()
                 fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                    .then(response => console.log('Success!', response))
+                    .then(response => {
+                        msg.innerHTML = "Message Sent Successfully!"
+                        setTimeout(function() {
+                            msg.innerHTML = ""
+                        },5000)
+                        form.reset()
+                    })
                     .catch(error => console.error('Error!', error.message))
             })
         </script>
